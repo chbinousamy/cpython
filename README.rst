@@ -1,9 +1,9 @@
 This is Python version 3.13.0 alpha 0
 =====================================
 
-.. image:: https://github.com/python/cpython/workflows/Tests/badge.svg
+.. image:: https://github.com/chbinousamy/cpython/workflows/Tests/badge.svg
    :alt: CPython build status on GitHub Actions
-   :target: https://github.com/python/cpython/actions
+   :target: https://github.com/chbinousamy/cpython/actions
 
 .. image:: https://dev.azure.com/python/cpython/_apis/build/status/Azure%20Pipelines%20CI?branchName=main
    :alt: CPython build status on Azure DevOps
