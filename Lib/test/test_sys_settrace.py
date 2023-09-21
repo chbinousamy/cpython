@@ -317,6 +317,13 @@ generator_example.events = ([(0, 'call'),
                             [(5, 'line'), (5, 'return')])
 
 
+def lineno_matches_lasti(frame):
+    last_line = None
+    for start, end, line in frame.f_code.co_lines():
+        if start <= frame.f_lasti < end:
+            last_line = line
+    return last_line == frame.f_lineno
+
 class Tracer:
     def __init__(self, trace_line_events=None, trace_opcode_events=None):
         self.trace_line_events = trace_line_events
@@ -330,6 +337,7 @@ class Tracer:
             frame.f_trace_opcodes = self.trace_opcode_events
 
     def trace(self, frame, event, arg):
+        assert lineno_matches_lasti(frame)
         self._reconfigure_frame(frame)
         self.events.append((frame.f_lineno, event))
         return self.trace
@@ -920,6 +928,35 @@ class TraceTestCase(unittest.TestCase):
              (3, 'line'),
              (6, 'line'),
              (6, 'return')])
+
+    def test_finally_with_conditional(self):
+
+        # See gh-105658
+        condition = True
+        def func():
+            try:
+                try:
+                    raise Exception
+                finally:
+                    if condition:
+                        result = 1
+                result = 2
+            except:
+                result = 3
+            return result
+
+        self.run_and_compare(func,
+            [(0, 'call'),
+             (1, 'line'),
+             (2, 'line'),
+             (3, 'line'),
+             (3, 'exception'),
+             (5, 'line'),
+             (6, 'line'),
+             (8, 'line'),
+             (9, 'line'),
+             (10, 'line'),
+             (10, 'return')])
 
     def test_break_to_continue1(self):
 
@@ -1890,6 +1927,7 @@ class JumpTracer:
     def trace(self, frame, event, arg):
         if self.done:
             return
+        assert lineno_matches_lasti(frame)
         # frame.f_code.co_firstlineno is the first line of the decorator when
         # 'function' is decorated and the decorator may be written using
         # multiple physical lines when it is too long. Use the first line
@@ -2114,7 +2152,7 @@ class JumpTestCase(unittest.TestCase):
             output.append(11)
         output.append(12)
 
-    @jump_test(5, 11, [2, 4], (ValueError, 'exception'))
+    @jump_test(5, 11, [2, 4], (ValueError, 'comes after the current code block'))
     def test_no_jump_over_return_try_finally_in_finally_block(output):
         try:
             output.append(2)

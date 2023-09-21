@@ -495,7 +495,7 @@ class _ExecutorManagerThread(threading.Thread):
                 # set_exception() fails if the future is cancelled: ignore it.
                 # Trying to check if the future is cancelled before calling
                 # set_exception() would leave a race condition if the future is
-                # cancelled betwen the check and set_exception().
+                # cancelled between the check and set_exception().
                 pass
             # Delete references to object. See issue16284
             del work_item
@@ -509,6 +509,10 @@ class _ExecutorManagerThread(threading.Thread):
         # Prevent queue writing to a pipe which is no longer read.
         # https://github.com/python/cpython/issues/94777
         self.call_queue._reader.close()
+
+        # gh-107219: Close the connection writer which can unblock
+        # Queue._feed() if it was stuck in send_bytes().
+        self.call_queue._writer.close()
 
         # clean up resources
         self.join_executor_internals()

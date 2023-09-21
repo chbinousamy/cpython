@@ -1543,12 +1543,20 @@ static PyMethodDef module_functions[] = {
 static int
 module_exec(PyObject *module)
 {
+    if (_PyTestInternalCapi_Init_Lock(module) < 0) {
+        return 1;
+    }
     if (_PyTestInternalCapi_Init_PyTime(module) < 0) {
         return 1;
     }
 
     if (PyModule_Add(module, "SIZEOF_PYGC_HEAD",
                         PyLong_FromSsize_t(sizeof(PyGC_Head))) < 0) {
+        return 1;
+    }
+
+    if (PyModule_Add(module, "SIZEOF_PYOBJECT",
+                        PyLong_FromSsize_t(sizeof(PyObject))) < 0) {
         return 1;
     }
 
