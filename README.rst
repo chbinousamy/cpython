@@ -1,3 +1,6 @@
+![alt text](https://github.com/chbinousamy/cpython/assets/images/cpython.jpeg?raw=true)
+
+
 This is Python version 3.13.0 alpha 0
 =====================================
 
