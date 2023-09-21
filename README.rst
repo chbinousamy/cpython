@@ -1,12 +1,14 @@
-![alt text](https://www.python.org/static/img/python-logo@2x.png)
+.. image:: https://github.com/chbinousamy/cpython/blob/main/assets/images/cpython.jpeg
 
-![alt text](https://github.com/chbinousamy/cpython/blob/main/assets/images/cpython.jpeg?raw=true)
-
-![alt text](https://github.com/chbinousamy/cpython/blob/main/assets/images/hydra.png?raw=true)
+.. image:: https://github.com/chbinousamy/cpython/blob/main/assets/images/hydra.png
 
 
 This is Python version 3.13.0 alpha 0
 =====================================
+
+[![CPython build status on GitHub Actions](https://github.com/chbinousamy/cpython/workflows/Tests/badge.svg)](https://github.com/chbinousamy/cpython/actions)
+
+
 
 .. image:: https://github.com/chbinousamy/cpython/workflows/Tests/badge.svg
    :alt: CPython build status on GitHub Actions
