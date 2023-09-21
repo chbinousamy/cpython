@@ -1,4 +1,8 @@
-![alt text](https://github.com/chbinousamy/cpython/assets/images/cpython.jpeg?raw=true)
+![alt text](https://www.python.org/static/img/python-logo@2x.png)
+
+![alt text](https://github.com/chbinousamy/cpython/blob/main/assets/images/cpython.jpeg?raw=true)
+
+![alt text](https://github.com/chbinousamy/cpython/blob/main/assets/images/hydra.png?raw=true)
 
 
 This is Python version 3.13.0 alpha 0
