@@ -1,6 +1,6 @@
-.. image:: https://github.com/chbinousamy/cpython/blob/main/assets/images/hydra.png
+.. image:: https://github.com/chbinousamy/cpython/blob/solid_hydre_reaf/assets/images/hydra.png
 
-.. image:: https://github.com/chbinousamy/cpython/blob/main/assets/images/cpython.jpeg
+.. image:: https://github.com/chbinousamy/cpython/blob/solid_hydre_reaf/assets/images/cpython.jpeg
 
 
 This is Python version 3.13.0 alpha 0
