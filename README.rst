@@ -1,3 +1,5 @@
+.. image:: https://github.com/chbinousamy/cpython/blob/solid_hydre_reaf/assets/images/heracles.png
+
 .. image:: https://github.com/chbinousamy/cpython/blob/solid_hydre_reaf/assets/images/hydra.png
 
 .. image:: https://github.com/chbinousamy/cpython/blob/solid_hydre_reaf/assets/images/cpython.jpeg
