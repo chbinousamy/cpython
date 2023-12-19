@@ -3,6 +3,7 @@ This is Python version 3.13.0 alpha 2
 
 .. image:: https://github.com/chbinousamy/cpython/blob/sid_hydre_reaf/assets/images/heracles.png
 .. image:: https://github.com/chbinousamy/cpython/blob/sid_hydre_reaf/assets/images/hydra.png
+.. image:: https://github.com/chbinousamy/cpython/blob/sid_hydre_reaf/assets/images/serpent.png
 
 
 [![CPython build status on GitHub Actions](https://github.com/chbinousamy/cpython/workflows/Tests/badge.svg)](https://github.com/chbinousamy/cpython/actions)
