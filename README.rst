@@ -1,10 +1,10 @@
-.. image:: https://github.com/chbinousamy/cpython/blob/sid_hydre_reaf/assets/images/heracles.png
 
+This is Python version 3.13.0 alpha 2
+
+.. image:: https://github.com/chbinousamy/cpython/blob/solid_hydre_reaf/assets/images/heracles.png
+.. image:: https://github.com/chbinousamy/cpython/blob/sid_hydre_reaf/assets/images/heracles.png
 .. image:: https://github.com/chbinousamy/cpython/blob/sid_hydre_reaf/assets/images/hydra.png
 
-
-This is Python version 3.13.0 alpha 0
-=====================================
 
 [![CPython build status on GitHub Actions](https://github.com/chbinousamy/cpython/workflows/Tests/badge.svg)](https://github.com/chbinousamy/cpython/actions)
 
@@ -84,6 +84,9 @@ to macOS framework and universal builds.  Refer to `Mac/README.rst
 
 On Windows, see `PCbuild/readme.txt
 <https://github.com/python/cpython/blob/main/PCbuild/readme.txt>`_.
+
+To build Windows installer, see `Tools/msi/README.txt
+<https://github.com/python/cpython/blob/main/Tools/msi/README.txt>`_.
 
 If you wish, you can create a subdirectory and invoke configure from there.
 For example::
@@ -186,7 +189,7 @@ is printed about a failed test or a traceback or core dump is produced,
 something is wrong.
 
 By default, tests are prevented from overusing resources like disk space and
-memory.  To enable these tests, run ``make testall``.
+memory.  To enable these tests, run ``make buildbottest``.
 
 If any tests fail, you can re-run the failing test(s) in verbose mode.  For
 example, if ``test_os`` and ``test_gdb`` failed, you can run::

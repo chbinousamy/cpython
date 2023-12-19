@@ -1,5 +1,4 @@
 import builtins
-import contextlib
 import errno
 import glob
 import json
@@ -22,7 +21,6 @@ import time
 import types
 import unittest
 from unittest import mock
-import _testinternalcapi
 import _imp
 
 from test.support import os_helper
@@ -50,6 +48,10 @@ try:
     import _xxsubinterpreters as _interpreters
 except ModuleNotFoundError:
     _interpreters = None
+try:
+    import _testinternalcapi
+except ImportError:
+    _testinternalcapi = None
 
 
 skip_if_dont_write_bytecode = unittest.skipIf(
@@ -1966,10 +1968,12 @@ class SubinterpImportTests(unittest.TestCase):
             print(_testsinglephase)
             ''')
         interpid = _interpreters.create()
-        with self.assertRaises(_interpreters.RunFailedError):
-            _interpreters.run_string(interpid, script)
-        with self.assertRaises(_interpreters.RunFailedError):
-            _interpreters.run_string(interpid, script)
+
+        excsnap = _interpreters.run_string(interpid, script)
+        self.assertIsNot(excsnap, None)
+
+        excsnap = _interpreters.run_string(interpid, script)
+        self.assertIsNot(excsnap, None)
 
 
 class TestSinglePhaseSnapshot(ModuleSnapshot):
